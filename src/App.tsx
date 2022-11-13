@@ -4,16 +4,16 @@ import './App.css';
 const socket = new WebSocket("ws://192.168.1.8:9090/ws");
 
 function App() {
-  const [message, setMessage] = useState({id:'', user: '', content: ''})
+  const [message, setMessage] = useState('')
   const [inputValue, setInputValue] = useState('')
 
   useEffect(() => {
     socket.onopen = () => {
-      setMessage({id: "1", user: "Taoufiq", content: "connected"})
+      setMessage('Connected')
     };
 
     socket.onmessage = (e) => {
-      setMessage({id: "1", user: "Taoufiq", content: e.data})
+      setMessage("Get message from server: " + e.data)
     };
 
     return () => {
@@ -25,9 +25,7 @@ function App() {
     e.preventDefault()
 
     socket.send(JSON.stringify({
-      id: "1",
-      user: "Taoufiq",
-      content: inputValue
+      message: inputValue
     }))
   }, [inputValue])
 
@@ -39,7 +37,7 @@ function App() {
     <div className="App">
       <input id="input" type="text" value={inputValue} onChange={handleChange} />
       <button onClick={handleClick}>Send</button>
-      <pre>{message.content}</pre>
+      <pre>{message}</pre>
     </div>
   );
 }
