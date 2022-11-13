@@ -7,6 +7,6 @@ Simple chat application using:
 
 ---
 
-Refer to backend repository: [backend](https://github.com/BAHALLA/lets-chat-golang).
+Refer to backend repository: [lets-chat-golang](https://github.com/BAHALLA/lets-chat-golang).
 
 ---

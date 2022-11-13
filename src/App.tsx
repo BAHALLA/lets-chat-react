@@ -9,11 +9,11 @@ function App() {
 
   useEffect(() => {
     socket.onopen = () => {
-      setMessage({id: "", user: "", content: "connected"})
+      setMessage({id: "1", user: "Taoufiq", content: "connected"})
     };
 
     socket.onmessage = (e) => {
-      setMessage({id: "", user: "", content: e.data})
+      setMessage({id: "1", user: "Taoufiq", content: e.data})
     };
 
     return () => {
@@ -25,8 +25,8 @@ function App() {
     e.preventDefault()
 
     socket.send(JSON.stringify({
-      id: "",
-      user: "",
+      id: "1",
+      user: "Taoufiq",
       content: inputValue
     }))
   }, [inputValue])
