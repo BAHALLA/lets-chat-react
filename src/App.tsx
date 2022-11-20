@@ -18,6 +18,7 @@ function App() {
 
     socket.onclose = () => {
       setMessage('Closed')
+      socket.close()
     }
   }, [])
 
