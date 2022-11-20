@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 
-const socket = new WebSocket("ws://localhost:9090/ws");
+const socket = new WebSocket("ws://192.168.1.8:9090/ws");
 
 function App() {
   const [message, setMessage] = useState('')
@@ -16,8 +16,8 @@ function App() {
       setMessage("Get message from server: " + e.data)
     };
 
-    return () => {
-      socket.close()
+    socket.onclose = () => {
+      setMessage('Closed')
     }
   }, [])
 
