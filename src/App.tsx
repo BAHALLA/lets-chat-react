@@ -14,7 +14,7 @@ function App() {
     };
 
     socket.onmessage = (e) => {
-      setMessage(e.data)
+      setMessage({id: '', user: '', content: e.data.content})
     };
 
     socket.onclose = () => {
@@ -27,7 +27,7 @@ function App() {
     e.preventDefault()
 
     socket.send(JSON.stringify({
-      id: Math.random() * 10, 
+      id: Math.floor(Math.random() * 1000), 
       user: messageUser,
       content: messageContent
     }))
